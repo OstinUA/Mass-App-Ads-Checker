@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>App-Ads Checker</title>
+  <style>
+    body { 
+      font-family: "Segoe UI", Tahoma, sans-serif; 
+      padding: 20px; 
+      background: #f4f6f8; 
+      margin: 0;
+    }
+    
+    h3 { margin-top: 0; color: #2c3e50; margin-bottom: 15px; }
+    
+    textarea { 
+      width: 100%; 
+      height: 150px; 
+      padding: 12px; 
+      box-sizing: border-box; 
+      border: 1px solid #ced4da; 
+      border-radius: 6px;
+      font-family: monospace;
+      resize: vertical;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    
+    button { 
+      width: 100%; 
+      padding: 12px; 
+      background: #007bff; 
+      color: white; 
+      border: none; 
+      cursor: pointer; 
+      font-weight: 600; 
+      border-radius: 6px;
+      transition: background 0.2s;
+      font-size: 14px;
+    }
+    button:hover { background: #0056b3; }
+    button:disabled { background: #b0bec5; cursor: not-allowed; }
+    
+    .status-bar { 
+      margin: 15px 0 10px; 
+      font-size: 13px; 
+      color: #546e7a; 
+      display: flex; 
+      justify-content: space-between; 
+      font-weight: 500;
+    }
+    
+    .table-container {
+      background: white;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    table { 
+      width: 100%; 
+      border-collapse: collapse; 
+      font-size: 13px; 
+    }
+    
+    th, td { 
+      border-bottom: 1px solid #eceff1; 
+      padding: 10px 12px; 
+      text-align: left; 
+    }
+    
+    th { 
+      background-color: #e9ecef; 
+      font-weight: 600; 
+      color: #455a64; 
+    }
+
+    .col-url { width: 60%; word-break: break-all; }
+    .col-status { width: 25%; }
+    .col-lines { width: 15%; text-align: center; }
+
+    .valid { color: #2e7d32; font-weight: bold; }
+    .error { color: #c62828; font-weight: bold; }
+    .empty { color: #f57f17; font-weight: bold; }
+    
+    a { color: #1976d2; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    
+    #downloadBtn { 
+      background: #388e3c; 
+      margin-top: 0;
+    }
+    #downloadBtn:hover { background: #2e7d32; }
+  </style>
+</head>
+<body>
+  <h3>Mass App-Ads Checker</h3>
+  <textarea id="domainList" placeholder="Enter domains here (one per line):&#10;hyperhippo.com&#10;google.com"></textarea>
+  <button id="checkBtn">Run Check</button>
+  
+  <div class="status-bar">
+    <span id="statusText">Ready</span>
+    <span id="progressText">0/0</span>
+  </div>
+
+  <div class="table-container">
+    <table id="resultsTable">
+      <thead>
+        <tr>
+          <th class="col-url">App-Ads URL</th>
+          <th class="col-status">Status</th>
+          <th class="col-lines">Lines</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <button id="downloadBtn" style="display: none;">Download CSV</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>
